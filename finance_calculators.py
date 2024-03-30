@@ -30,6 +30,19 @@ interest = ""
 total = 0.0
 r = 0.0
 
+
+def simple_interest():
+    total = deposit * (1 + r*years)
+    round_total = round(total,2)      
+    return(round_total)
+
+
+def compound_interest():
+    total = deposit * math.pow((1 + r),years)
+    round_total = round(total,2)
+    return(round_total)
+
+
 # ask again if the user does not enter investment or bond
 while user_input != "investment" and user_input != "bond":    
         user_input = input(menu_text).lower()
@@ -48,15 +61,13 @@ if user_input == "investment":
     
     # if simple interest
     if interest == "simple":
-        total = deposit * (1 + r*years)
-        round_total = round(total,2)
-        print(f"The total amount after {years} years if you deposit £{deposit} and the interest rate is {interest_rate}%: {round_total}")       
+        simple_int = simple_interest()
+        print(f"The total amount after {years} years if you deposit £{deposit} and the interest rate is {interest_rate}%: {simple_int}")       
    
     # if compound interest
     else:
-        total = deposit * math.pow((1 + r),years)
-        round_total = round(total,2)
-        print(f"The total amount after {years} years if you deposit £{deposit} and the interest rate is {interest_rate}%: £{round_total}")
+        compound_int = compound_interest()
+        print(f"The total amount after {years} years if you deposit £{deposit} and the interest rate is {interest_rate}%: £{compound_int}")
         
 # if bond is entered ask for more inputs 
 else:
